@@ -1,6 +1,8 @@
 package com.example.kaichiro.usingsqlite;
 
-public class Livro {
+import java.io.Serializable;
+
+public class Livro  implements Serializable {
 
     private int id;
     private String titulo;
@@ -55,4 +57,13 @@ public class Livro {
         this.editora = editora;
     }
 
+    @Override
+    public String toString() {
+        return "Livro{" +
+                "id=" + id +
+                ", titulo='" + titulo + '\'' +
+                ", autor='" + autor + '\'' +
+                ", editora='" + editora + '\'' +
+                '}';
+    }
 }

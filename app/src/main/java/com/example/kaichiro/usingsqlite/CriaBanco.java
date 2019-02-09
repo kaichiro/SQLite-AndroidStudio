@@ -23,14 +23,13 @@ public class CriaBanco extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-//        String CREATE_TABLEA_LIVROS = "CREATE TABLE " + TABELA + " " +
-//                "(" +
-//                ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
-//                TITULO + " TEXT, " +
-//                AUTOR + " TEXT, " +
-//                EDITORA + " TEXT " +
-//                ")";
-        String CREATE_TABLEA_LIVROS = new StringBuilder().append("CREATE TABLE ").append(TABELA).append(" ").append("(").append(ID).append(" INTEGER PRIMARY KEY AUTOINCREMENT, ").append(TITULO).append(" TEXT, ").append(AUTOR).append(" TEXT, ").append(EDITORA).append(" TEXT, ").append(")").toString();
+        String CREATE_TABLEA_LIVROS = "CREATE TABLE " + TABELA + " " +
+                "(" +
+                ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                TITULO + " TEXT, " +
+                AUTOR + " TEXT, " +
+                EDITORA + " TEXT " +
+                ")";
 
         db.execSQL(CREATE_TABLEA_LIVROS);
     }

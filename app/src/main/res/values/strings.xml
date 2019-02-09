@@ -1,3 +1,9 @@
 <resources>
-    <string name="app_name">UsingSQLite</string>
+    <string name="app_name">Using SQLite</string>
+    <string name="title_activity_main2">Main2Activity</string>
+    <string name="lblEditora">Editora</string>
+    <string name="lblAutor">Autor</string>
+    <string name="lblTitulo">Título</string>
+    <string name="btnGravar">Gravar</string>
+    <string name="btnAddLivro">Add Livro</string>
 </resources>

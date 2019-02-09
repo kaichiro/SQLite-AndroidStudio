@@ -45,8 +45,8 @@ public class ControllerDB {
     /**
      * Carregar dados
      */
-    public List<Livro> getAll() {
-        List<Livro> livros = new ArrayList<>();
+    public ArrayList<Livro> getAll() {
+        ArrayList<Livro> livros = new ArrayList<>();
 
         String sqlSelect = "select * from " + CriaBanco.TABELA;
 
@@ -55,11 +55,14 @@ public class ControllerDB {
 
         if (cursor != null && cursor.moveToFirst()) {
             do {
-                Livro livro = new Livro(
-                        Integer.parseInt(cursor.getString(0))
-                        , cursor.getString(1)
-                        , cursor.getString(2)
-                        , cursor.getString(3)
+                livros.add(
+                        new Livro(
+                                Integer.parseInt(cursor.getString(0))
+                                , cursor.getString(1)
+                                , cursor.getString(2)
+                                , cursor.getString(3)
+                        )
+
                 );
             } while (cursor.moveToNext());
         }
@@ -136,16 +139,14 @@ public class ControllerDB {
         ContentValues valores = new ContentValues();
         valores.put(CriaBanco.TITULO, livro.getTitulo());
         valores.put(CriaBanco.AUTOR, livro.getAutor());
-        valores.put(CriaBanco.TITULO, livro.getEditora());
-        valores.put(CriaBanco.TITULO, livro.getTitulo());
+        valores.put(CriaBanco.EDITORA, livro.getEditora());
 
         if (livro.getId() > 0) {
+            valores.put(CriaBanco.ID, livro.getId());
             db.update(CriaBanco.TABELA, valores, CriaBanco.ID + " = ?", new String[]{String.valueOf(livro.getId())});
             returnLivro = this.findById(livro.getId());
         } else {
-            valores.put(CriaBanco.ID, livro.getId());
             db.insert(CriaBanco.TABELA, null, valores);
-
             Cursor cursor = db.query(CriaBanco.TABELA, null, null, null, null, null, "ID desc", "1");
             if (cursor != null) {
                 cursor.moveToFirst();
